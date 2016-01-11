@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<SOAP-ENV:Envelope xmlns:SOAP-ENV="http://schemas.xmlsoap.org/soap/envelope/">
+    <SOAP-ENV:Header>
+        <info appname="wss1" correlationID="9f8e517d-ce12-80a2-2e36-9c4298b0e21b@F5"/>
+    </SOAP-ENV:Header>
+    <SOAP-ENV:Body>
+        <submitClaimResponse xmlns:ns1="http://esb.abc.org" xmlns="http://esb.abc.org/claims/">
+            <ns1:ResponseStatus>
+                <ns1:Status>SUCCESS</ns1:Status>
+            </ns1:ResponseStatus>
+        </submitClaimResponse>
+    </SOAP-ENV:Body>
+</SOAP-ENV:Envelope>

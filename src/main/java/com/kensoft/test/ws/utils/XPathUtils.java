@@ -90,7 +90,9 @@ public final class XPathUtils {
         for (int i = 0; i < nodeList.getLength(); i++) {
             Node item = nodeList.item(i);
             String text = item.getTextContent();
-            if (StringUtils.isNotBlank(text)) result.add(text);
+            if (StringUtils.isNotBlank(text)) {
+                result.add(text);
+            }
         }
         return result;
     }

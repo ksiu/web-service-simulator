@@ -1,5 +1,7 @@
 package com.kensoft.test.ws.utils;
 
+import static com.kensoft.test.ws.utils.ClassPathResourceUtils.getResourceAsFile;
+import static com.kensoft.test.ws.utils.ClassPathResourceUtils.getResourceAsStream;
 import static org.hamcrest.CoreMatchers.containsString;
 import static org.hamcrest.CoreMatchers.equalTo;
 import static org.junit.Assert.assertThat;
@@ -24,7 +26,7 @@ public class SoapMessageUtilsTest {
 
     @Test
     public void createMessage() throws IOException, SOAPException {
-        SOAPMessage result = SoapMessageUtils.createMessage(ClassPathResourceUtils.getResourceAsFile("/soap-request.xml"));
+        SOAPMessage result = SoapMessageUtils.createMessage(getResourceAsFile("/soap-request.xml"));
         assertThat(result.getSOAPPart().getEnvelope().getBody().hasFault(), equalTo(false));
     }
 
@@ -36,7 +38,7 @@ public class SoapMessageUtilsTest {
 
     @Test
     public void createFaultMessage() throws IOException, SOAPException {
-        SOAPMessage result = SoapMessageUtils.createMessage(ClassPathResourceUtils.getResourceAsFile("/responses/1.2/soap-fault.xml"));
+        SOAPMessage result = SoapMessageUtils.createMessage(getResourceAsFile("/responses/1.2/soap-fault.xml"));
         assertThat(result.getSOAPPart().getEnvelope().getBody().hasFault(), equalTo(true));
         assertThat(result.getSOAPPart().getEnvelope().getBody().getFault().getFaultString(), equalTo(FAULT_STRING));
     }
@@ -44,20 +46,21 @@ public class SoapMessageUtilsTest {
     @Test
     public void createMultipartMessage() throws IOException, SOAPException {
         MimeHeaders headers = new MimeHeaders();
-        headers.setHeader("Content-Type","multipart/related; type=\"application/xop+xml\"; start=\"soap\"; start-info=\"text/xml\"; boundary=\"----=_Part_0_1108821662.1421450143368\"\n");
-        SOAPMessage result = SoapMessageUtils.createMessage(ClassPathResourceUtils.getResourceAsStream("/multipart.txt"), headers);
+        headers.setHeader("Content-Type","multipart/related; type=\"application/xop+xml\"; " +
+                "start=\"soap\"; start-info=\"text/xml\"; boundary=\"----=_Part_0_1108821662.1421450143368\"");
+        SOAPMessage result = SoapMessageUtils.createMessage(getResourceAsStream("/multipart.txt"), headers);
         assertThat(result.getSOAPBody().hasFault(), equalTo(false));
     }
 
     @Test
     public void serializeToXml() throws IOException, SOAPException {
-        SOAPMessage result = SoapMessageUtils.createMessage(ClassPathResourceUtils.getResourceAsFile("/responses/1.2/soap-fault.xml"));
+        SOAPMessage result = SoapMessageUtils.createMessage(getResourceAsFile("/responses/1.2/soap-fault.xml"));
         assertThat(SoapMessageUtils.toString(result.getSOAPBody().getFault()), containsString(FAULT_STRING));
     }
 
     @Test
     public void getSoapVersion() throws IOException {
-        SOAPMessage message = SoapMessageUtils.createMessage(ClassPathResourceUtils.getResourceAsFile("/responses/1.1/soap-fault.xml"));
+        SOAPMessage message = SoapMessageUtils.createMessage(getResourceAsFile("/responses/1.1/soap-fault.xml"));
         SoapVersion result = SoapMessageUtils.getSoapVersion(message);
         assertThat(result, equalTo(SoapVersion.SOAP11));
 

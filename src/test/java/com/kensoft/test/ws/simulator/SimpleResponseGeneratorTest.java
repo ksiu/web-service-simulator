@@ -9,6 +9,7 @@ import static org.hamcrest.MatcherAssert.assertThat;
 
 import java.io.IOException;
 import java.util.Locale;
+import javax.xml.soap.SOAPException;
 import javax.xml.soap.SOAPFault;
 import javax.xml.soap.SOAPMessage;
 
@@ -22,13 +23,13 @@ public class SimpleResponseGeneratorTest {
     private SimpleResponseGenerator generator = new SimpleResponseGenerator();
 
     @Test
-    public void testCreateResponse() throws Exception {
+    public void testCreateResponse() throws SOAPException, IOException {
         SOAPMessage result = generator.createResponse(SoapMessageUtils.createMessage(getResourceAsFile("soap-request.xml")));
         assertThat(result.getSOAPBody().getFault(), is(nullValue()));
     }
 
     @Test
-    public void testCreateResponseWithException() throws Exception {
+    public void testCreateResponseWithException() throws SOAPException {
         String randomMessage = RandomStringUtils.random(6);
         SOAPMessage result = generator.createResponse(new IOException(randomMessage), SoapVersion.SOAP12);
         assertThat(result.getSOAPBody().getFault(), instanceOf(SOAPFault.class));

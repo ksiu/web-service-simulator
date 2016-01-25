@@ -3,6 +3,7 @@ apply plugin: 'war'
 apply plugin: 'jetty'
 apply plugin: 'idea'
 apply from: 'quality.gradle'
+apply from: 'coverage.gradle'
 
 defaultTasks "clean", "compileJava"
 

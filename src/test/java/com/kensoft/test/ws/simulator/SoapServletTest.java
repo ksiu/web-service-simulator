@@ -6,21 +6,14 @@ import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
 
-import java.io.ByteArrayInputStream;
 import java.io.IOException;
-import java.io.InputStream;
 import java.io.PrintWriter;
 import java.util.StringTokenizer;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.xml.soap.MimeHeaders;
 import javax.xml.soap.SOAPMessage;
 
-import com.kensoft.test.ws.utils.ClassPathResourceUtils;
-import com.kensoft.test.ws.utils.SoapMessageUtils;
-import mockit.MockUp;
-import org.apache.commons.lang.UnhandledException;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.mockito.InjectMocks;

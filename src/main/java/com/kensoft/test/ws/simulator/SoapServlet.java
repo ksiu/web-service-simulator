@@ -1,7 +1,6 @@
 package com.kensoft.test.ws.simulator;
 
 import java.io.ByteArrayOutputStream;
-import java.io.File;
 import java.io.IOException;
 import java.util.Enumeration;
 import java.util.StringTokenizer;
@@ -14,17 +13,11 @@ import javax.xml.soap.MimeHeaders;
 import javax.xml.soap.SOAPException;
 import javax.xml.soap.SOAPMessage;
 
-import org.apache.commons.lang.UnhandledException;
-import org.apache.log4j.Logger;
-
 import com.kensoft.test.ws.utils.SoapMessageUtils;
+import org.apache.commons.lang.UnhandledException;
 
 
 public class SoapServlet extends HttpServlet {
-    private static final Logger LOG = Logger.getLogger(SoapServlet.class);
-
-    private static final String STRING_CONTENT_TYPE_HEADER_NAME = "Content-Type";
-    private static final File FILE_UPLOAD_TEMP_DIRECTORY = new File(System.getProperty("java.io.tmpdir"));
 
     private ResponseGenerator responseGenerator;
 

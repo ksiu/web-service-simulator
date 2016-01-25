@@ -7,7 +7,7 @@
 		</layout>
 	</appender>
 	<appender name="httpLog" class="org.apache.log4j.RollingFileAppender">
-		<param name="file" value="requests.log"/>
+		<param name="file" value="/tmp/requests.log"/>
 	    <param name="MaxFileSize" value="2MB"/>
 	    <param name="MaxBackupIndex" value="3"/>
 		<layout class="org.apache.log4j.PatternLayout">
@@ -16,7 +16,7 @@
 	</appender>
 
   	<appender name="errorLog" class="org.apache.log4j.RollingFileAppender">
-		<param name="file" value="errors.log"/>
+		<param name="file" value="/tmp/errors.log"/>
 	    <param name="MaxFileSize" value="2MB"/>
 	    <param name="MaxBackupIndex" value="3"/>
 		<layout class="org.apache.log4j.PatternLayout">

@@ -4,11 +4,14 @@ apply plugin: 'jetty'
 apply plugin: 'idea'
 apply from: 'quality.gradle'
 apply from: 'coverage.gradle'
+apply from: 'publish.gradle'
 
 defaultTasks "clean", "compileJava"
 
 repositories {
-    mavenCentral()
+    maven {
+        url "${artifactory_contextUrl}/maven-repo"
+    }
 }
 
 dependencies {

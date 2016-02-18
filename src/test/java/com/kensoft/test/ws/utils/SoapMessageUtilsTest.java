@@ -33,7 +33,7 @@ public class SoapMessageUtilsTest {
     @Test
     public void createMessageWithNull() throws IOException, SOAPException {
         expectedException.expect(InvalidMessageException.class);
-        SOAPMessage result = SoapMessageUtils.createMessage(new NullInputStream(1));
+        SoapMessageUtils.createMessage(new NullInputStream(1));
     }
 
     @Test

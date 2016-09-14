@@ -12,6 +12,7 @@ repositories {
     maven {
         url "${artifactory_contextUrl}/maven-repo"
     }
+    mavenCentral()
 }
 
 dependencies {

@@ -9,10 +9,10 @@ apply from: 'publish.gradle'
 defaultTasks "clean", "compileJava"
 
 repositories {
+    mavenCentral()
     maven {
         url "${artifactory_contextUrl}/maven-repo"
     }
-    mavenCentral()
 }
 
 dependencies {

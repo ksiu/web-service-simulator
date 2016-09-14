@@ -10,9 +10,6 @@ defaultTasks "clean", "compileJava"
 
 repositories {
     mavenCentral()
-    maven {
-        url "${artifactory_contextUrl}/maven-repo"
-    }
 }
 
 dependencies {

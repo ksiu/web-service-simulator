@@ -4,6 +4,10 @@
          xsi:schemaLocation="http://java.sun.com/xml/ns/javaee
      http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd">
 
+    <welcome-file-list>
+        <welcome-file>index.html</welcome-file>
+    </welcome-file-list>
+
     <servlet>
         <servlet-name>simulator</servlet-name>
         <servlet-class>com.kensoft.test.ws.simulator.SoapServlet</servlet-class>
@@ -12,7 +16,7 @@
 
     <servlet-mapping>
         <servlet-name>simulator</servlet-name>
-        <url-pattern>/*</url-pattern>
+        <url-pattern>/ws/*</url-pattern>
     </servlet-mapping>
 
     <filter>

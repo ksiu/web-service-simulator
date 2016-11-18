@@ -8,7 +8,6 @@ import static org.mockito.Mockito.when;
 
 import java.io.IOException;
 import java.io.PrintWriter;
-import java.util.StringTokenizer;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -35,7 +34,7 @@ public class SoapServletTest {
     public void testPost() throws IOException, ServletException {
         HttpServletRequest request = mock(HttpServletRequest.class);
         HttpServletResponse response = mock(HttpServletResponse.class);
-        when(request.getHeaderNames()).thenReturn(new StringTokenizer(""));
+//        when(request.getHeaderNames()).thenReturn(new StringTokenizer(""));
         when(request.getInputStream()).thenReturn(new DelegatingServletInputStream(getResourceAsStream("soap-request.xml")));
         when(responseGenerator.createResponse(any())).thenReturn(mock(SOAPMessage.class));
         when(response.getWriter()).thenReturn(printWriter);
